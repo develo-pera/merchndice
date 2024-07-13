@@ -35,10 +35,6 @@ const SingleMerch = () => {
               <p className="uppercase">XL</p>
             </div>
             <div className="flex items-center justify-between">
-              <p>Sex:</p>
-              <p>Unisex</p>
-            </div>
-            <div className="flex items-center justify-between">
               <p>Date collected:</p>
               <p>06.05.2023.</p>
             </div>

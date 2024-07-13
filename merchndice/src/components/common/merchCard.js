@@ -4,17 +4,23 @@ import truncateEthAddress from "truncate-eth-address";
 import { LucideSparkles } from "lucide-react";
 
 const MerchCard = ({
+  image,
   id=1,
-  image="https://imageio.forbes.com/specials-images/imageserve/60d9b443753f53ab8eb7eaea/Violet-Grey-collaboration-with-Monica-Rose--Photo-Credit--Joyce-Park-/0x0.png?format=png&crop=674,674,x0,y2,safe&width=960",
-  title="Superawesome T-Shirt",
-  event="ETHGlobal",
-  donor="0xE0fF737685fdE7Fd0933Fc280D53978b3d0700D5"
-}) => (
+  title,
+  event,
+  donor
+}) =>(
   <Card>
     <Link href={`/merch/${id}`}>
       <CardContent className="mt-[24px] hover:cursor-pointer">
-        <img className="mb-3" src={image} alt="" />
-        <p className="font-bold mb-3">Card Content</p>
+        <div className="mb-3">
+          {
+            image ?
+              <img src={image} alt="" /> :
+              <div className="h-[222px] bg-gray-800" />
+          }
+        </div>
+        <p className="font-bold mb-3">{title || "Title"}</p>
         <div className="flex justify-between items-center text-gray-400">
           <p className="text-sm">Event:</p>
           <div>
@@ -24,7 +30,7 @@ const MerchCard = ({
         <div className="flex justify-between items-center text-gray-400">
           <p className="text-sm">Donor:</p>
           <div>
-            <p className="text-sm text-pink-400">{truncateEthAddress(donor)}</p>
+            <p className="text-sm text-pink-400">{donor && truncateEthAddress(donor)}</p>
           </div>
         </div>
       </CardContent>
