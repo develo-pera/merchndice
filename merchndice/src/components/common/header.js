@@ -1,12 +1,10 @@
 import Link from "next/link";
 import LoginModal from "@/components/common/loginModal";
-import { useAccount, useDisconnect } from "wagmi";
-import truncateEthAddress from "truncate-eth-address";
-import { LucideLogOut } from "lucide-react";
+import { useAccount } from "wagmi";
+import UserProfile from "@/components/common/userProfile";
 
 const Header = () => {
   const account = useAccount();
-  const { disconnect } = useDisconnect();
 
   return (
     <div className="flex w-full flex-col">
@@ -47,12 +45,7 @@ const Header = () => {
         </nav>
         {
           account.address ?
-            (
-              <div className="flex items-center gap-5">
-                <p>{truncateEthAddress(account.address)}</p>
-                <LucideLogOut onClick={disconnect} className="h-4 w-4 cursor-pointer" />
-              </div>
-            ) :
+            <UserProfile address={account.address} /> :
             <LoginModal />
         }
       </header>

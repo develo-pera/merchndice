@@ -5,8 +5,10 @@ import MerchCard from "@/components/common/merchCard";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { useAccount } from "wagmi";
+import { useSession } from "next-auth/react";
 
 const Recycle = () => {
+  const { data: session, status } = useSession();
   const { address } = useAccount();
   const [file, setFile] = useState();
   const [title, setTitle] = useState();
@@ -16,6 +18,26 @@ const Recycle = () => {
 
   const submit = () => {
     console.log(file);
+  }
+
+  if (status === "loading") {
+    return (
+      <Layout>
+        <div className="max-w-4xl mx-auto">
+          <p>Loading...</p>
+        </div>
+      </Layout>
+    )
+  }
+
+  if (status === "unauthenticated") {
+    return (
+      <Layout>
+        <div className="max-w-4xl mx-auto">
+          <p>Access Denied</p>
+        </div>
+      </Layout>
+    )
   }
 
   return (

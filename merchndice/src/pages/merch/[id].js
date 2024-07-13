@@ -6,14 +6,20 @@ import truncateEthAddress from "truncate-eth-address";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import RaffleboardItem from "@/components/common/raffleboardItem";
+import EnsPictureOrAvatar from "@/components/common/ensPictureOrAvatar";
+import AddressOrEns from "@/components/common/addressOrEns";
+import { useEnsName } from "wagmi";
+import { mainnet } from "viem/chains";
 
 const SingleMerch = () => {
   const image = "https://imageio.forbes.com/specials-images/imageserve/60d9b443753f53ab8eb7eaea/Violet-Grey-collaboration-with-Monica-Rose--Photo-Credit--Joyce-Park-/0x0.png?format=png&crop=674,674,x0,y2,safe&width=960"
   const title = "Superawesome T-Shirt"
   const event = "ETHGlobal Brussels"
   const donor="0xE0fF737685fdE7Fd0933Fc280D53978b3d0700D5"
-  const address = donor;
   const ticketPrice = 5;
+
+  const { data } = useEnsName({ address: donor, chainId: mainnet.id });
+
   return (
     <Layout>
       <div className="max-w-4xl mx-auto grid grid-cols-2 gap-10">
@@ -41,10 +47,8 @@ const SingleMerch = () => {
             <div className="flex items-center justify-between">
               <p>Donor:</p>
               <div className="flex items-center gap-2">
-                <Avatar className="w-4 h-4">
-                  <AvatarImage src="https://github.com/shadcn.png" />
-                </Avatar>
-                <p>{truncateEthAddress(donor)}</p>
+                <EnsPictureOrAvatar domain={data} className="!w-[16px]" />
+                <AddressOrEns className="text-sm" address={donor} />
               </div>
             </div>
           </div>
@@ -65,8 +69,8 @@ const SingleMerch = () => {
           <div className="mt-10">
             <p className="text-gray-400 mb-3">Raffleboard</p>
             <div>
-              <RaffleboardItem entries={3} address={address} />
-              <RaffleboardItem entries={1} address={address} />
+              <RaffleboardItem entries={3} address="0xE0fF737685fdE7Fd0933Fc280D53978b3d0700D5" />
+              <RaffleboardItem entries={1} address="0x50c55d80109a9dAc3f262a071d8E51bB957Ae497" />
             </div>
           </div>
         </div>
