@@ -13,15 +13,25 @@ export default function Home() {
       <div className="grid grid-cols-3 gap-5 mt-3">
         <MerchCard
           image="https://imageio.forbes.com/specials-images/imageserve/60d9b443753f53ab8eb7eaea/Violet-Grey-collaboration-with-Monica-Rose--Photo-Credit--Joyce-Park-/0x0.png?format=png&crop=674,674,x0,y2,safe&width=960"
-          title="Superawesome T-Shirt"
-          event="ETHGlobal"
+          title="Violet Grey shirt"
+          event="ETHGlobal Lisbon"
           donor="0xE0fF737685fdE7Fd0933Fc280D53978b3d0700D5"
         />
-        <MerchCard />
-        <MerchCard />
-        <MerchCard />
-        <MerchCard />
-        <MerchCard />
+        <MerchCard
+          image="https://pbs.twimg.com/media/Fc3w2wdX0AAfmGB.jpg"
+          title="Raave Sweater"
+          event="Devconnect Istanbul"
+          donor="0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045"
+        />
+        <MerchCard
+          image="https://pbs.twimg.com/media/FTO7lkBVUAEErr1.jpg"
+          title="Azuki Jacket"
+          event="NFT Paris"
+          donor="0x50c55d80109a9dAc3f262a071d8E51bB957Ae497"
+        />
+        {/*<MerchCard />*/}
+        {/*<MerchCard />*/}
+        {/*<MerchCard />*/}
       </div>
 
     </Layout>
