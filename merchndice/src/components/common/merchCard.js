@@ -16,6 +16,8 @@ const MerchCard = ({
 }) => {
   const { data } = useEnsName({ address: donor, chainId: mainnet.id });
 
+  console.log("ens name", data);
+
   return (
     <Card>
       <Link href={`/merch/${id}`}>

@@ -6,6 +6,9 @@ const EnsPictureOrAvatar = ({domain, className}) => {
     name: normalize(domain),
   })
 
+  console.log("domain", domain);
+  console.log("avatar", data);
+
   return (
     data ? <img className={`w-[22px] rounded-full ${className}`} src={data} alt="ENS Avatar" /> : <></>
   )
